@@ -6,6 +6,8 @@ import More from '@/components/More'
 import Me from '@/components/Me'
 import Login from '@/components/Login'
 import Detail from '@/components/Detail'
+import Classes from '@/components/Classes'
+import Calender from '@/components/Calender'
 // const Home = r => require.ensure([], () => r(require('../components/Home')), 'Home')
 // const More = r => require.ensure([], () => r(require('../components/More')), 'More')
 // const Me = r => require.ensure([], () => r(require('../components/Me')), 'Me')
@@ -112,6 +114,22 @@ export default new Router({
             meta: {
               index: 2
             },
+        },
+        {
+            path: '/classes',
+            name: 'classes',
+            component: Classes,
+            meta: {
+              index: 5
+            },
+        },
+        {
+            path: '/calender',
+            name: 'calender',
+            component : Calender,
+            meta: {
+                index: 6
+            }
         }
     ],
     scrollBehavior (to, from, savedPosition) {

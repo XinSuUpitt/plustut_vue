@@ -61,7 +61,7 @@ export default {
                 })
             }
             if (path === '/all') {
-                this.lists = this.videoData[3]
+                this.lists = this.videoData[0]
                 this.videoCls = '全部'
             }else if (path === '/movie') {
                 this.lists = this.videoData[0]

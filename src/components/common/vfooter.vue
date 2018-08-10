@@ -4,7 +4,7 @@
             <i class="iconfont icon-dianying"></i>
             <span>主页</span>
         </router-link>
-        <router-link to="/me">
+        <router-link to="/classes">
             <i class="iconfont icon-my1"></i>
             <span>课程</span>
         </router-link>
@@ -16,9 +16,9 @@
             <i class="iconfont icon-my1"></i>
             <span>关于我们</span>
         </router-link>
-        <router-link to="/me">
+        <router-link to="/calender">
             <i class="iconfont icon-my1"></i>
-            <span>新闻</span>
+            <span>日历</span>
         </router-link>
     </section>
 </template>

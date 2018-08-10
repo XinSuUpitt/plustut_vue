@@ -42,6 +42,10 @@ export const initHome = () => $fetch('get', 'list')
 //获取教师列表
 export const initTeachers = () => $fetch('get', 'getteachers')
 
+export const initClasses = () => $fetch('get', 'getClasses')
+
+export const addClass = (student_id, teacher_id) => $fetch('post', 'addClass', {student_id, teacher_id})
+
 // 验证码
 export const yzmChange = () => $fetch('get','getYzm')
 
