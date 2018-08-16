@@ -1,5 +1,61 @@
 <template>
+    
     <div id="video">
+        <mu-appbar style="width: 100%; background: linear-gradient(to right, #33ccff -6%, #303f9f 100%);">
+            <mu-button icon slot="left" @click="open = !open">
+                <mu-icon value="menu"></mu-icon>
+            </mu-button>
+            Title
+            <mu-menu slot="right">
+                <mu-button flat>MENU</mu-button>
+                <mu-list slot="content">
+                <mu-list-item button>
+                    <mu-list-item-content>
+                    <mu-list-item-title>Menu Item 1</mu-list-item-title>
+                    </mu-list-item-content>
+                </mu-list-item>
+                <mu-list-item button>
+                    <mu-list-item-content>
+                    <mu-list-item-title>Menu Item 2</mu-list-item-title>
+                    </mu-list-item-content>
+                </mu-list-item>
+                </mu-list>
+            </mu-menu>
+            </mu-appbar>
+
+            <mu-drawer :open.sync="open" :docked="docked" :right="position === 'right'">
+                <mu-list>
+                <mu-list-item>
+                    <router-link to="/">
+                        <mu-list-item-title>主页</mu-list-item-title>
+                    </router-link>
+                </mu-list-item>
+                <mu-list-item>
+                    <router-link to="/classes">
+                        <mu-list-item-title>课程</mu-list-item-title>
+                    </router-link>
+                </mu-list-item>
+                <mu-list-item>
+                    <router-link to="/me">
+                        <mu-list-item-title>我</mu-list-item-title>
+                    </router-link>
+                </mu-list-item>
+                <mu-list-item>
+                    <router-link to="/me">
+                        <mu-list-item-title>关于我们</mu-list-item-title>
+                    </router-link>
+                </mu-list-item>
+                <mu-list-item>
+                    <router-link to="/calender">
+                        <mu-list-item-title>calender</mu-list-item-title>
+                    </router-link>
+                </mu-list-item>
+                <mu-list-item  @click="open = false" button>
+                    <mu-list-item-title>Close</mu-list-item-title>
+                </mu-list-item>
+                </mu-list>
+            </mu-drawer>
+
         <transition :name="transitionName">
             <keep-alive include="home">
                 <router-view class="child-view"> </router-view>
@@ -20,7 +76,10 @@ export default {
     data () {
         return{
             transitionName: 'slide-left',
-            isShow: true
+            isShow: true,
+            docked: false,
+            open: false,
+            position: 'left'
         }
     },
     watch: {

@@ -14,6 +14,17 @@ import DaySpanVuetify from 'dayspan-vuetify'
 import 'vuetify/dist/vuetify.min.css'
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
 import 'dayspan-vuetify/dist/lib/dayspan-vuetify.min.css'
+import MuseUI from 'muse-ui'
+import 'muse-ui/dist/muse-ui.css'
+import theme from 'muse-ui/lib/theme'
+import * as colors from 'muse-ui/lib/theme/colors'
+
+theme.add('custom-theme', {
+  primary: colors.indigo,
+  secondary: colors.pinkA200
+});
+
+Vue.use(MuseUI);
 
 Vue.config.productionTip = false
 

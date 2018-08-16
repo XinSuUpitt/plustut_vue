@@ -1,3 +1,4 @@
+<!-- 
 <template>
     <section class="footer">
         <router-link to="/">
@@ -20,8 +21,14 @@
             <i class="iconfont icon-my1"></i>
             <span>日历</span>
         </router-link>
-    </section>
+    </section> 
 </template>
+-->
+
+<template>
+    
+</template>
+
 
 <script>
 
