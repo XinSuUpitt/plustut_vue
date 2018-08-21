@@ -10,36 +10,36 @@
             </mu-row>
         </div>
 
-        <mu-carousel style="width:100%; max-width: 375px; margin-top: 20px" justify-content="center">
-            <mu-carousel-item>
-                <img :src="carouselImg1">
-            </mu-carousel-item>
-            <mu-carousel-item>
-                <img :src="carouselImg2">
-            </mu-carousel-item>
-        </mu-carousel>
+        <div class="row_flex">
+            <div class="row_flex_1">
+                <img src="../assets/可定制.png" class="row_flex_img">
+                <h3 class="txt_h3"> 定制化课程</h3>
+                <div class="txt_h4">专业教师团队，可私人订制课程</div>
+            </div>
 
-        <mu-container>
-            <mu-card style="width: 100%; max-width: 375px; margin: 0 auto;">
-            <mu-card-header title="Myron Avatar" sub-title="sub title">
-                <mu-avatar slot="avatar">
-                </mu-avatar>
-            </mu-card-header>
-            <mu-card-media title="Image Title" sub-title="Image Sub Title">
-            </mu-card-media>
-            <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
-            <mu-card-text>
-                散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
-                调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
-                似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
-                找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-            </mu-card-text>
-            <mu-card-actions>
-                <mu-button flat>Action 1</mu-button>
-                <mu-button flat>Action 2</mu-button>
-            </mu-card-actions>
-            </mu-card>
-        </mu-container>
+            <mu-carousel :active="active" class="row_flex_1">
+            <mu-icon value="arrow_back" slot="left"></mu-icon>
+            <mu-icon value="arrow_forward" slot="right"></mu-icon>
+            <template slot="indicator" slot-scope="{ index, active }">
+                <mu-button icon class="mu-carousel-indicator-button" :class="{'mu-carousel-indicator-button__active': active}" @click="changeActive(index)">
+                <span class="rect-indicator"></span>
+                </mu-button>
+            </template>
+            <mu-carousel-item class="row_flex_img">
+                <img :src="carouselImg1" class="row_flex_img">
+            </mu-carousel-item>
+            <mu-carousel-item class="row_flex_img">
+                <img :src="carouselImg2" class="row_flex_img">
+            </mu-carousel-item>
+            </mu-carousel>
+
+            <div class="row_flex_1">
+                <img src="../assets/组件丰富.png" class="row_flex_img">
+                <h3 class="txt_h3"> 课程内容多样</h3>
+                <div class="txt_h4">拥有独家权威中港中小学一手学习复习资料</div>
+            </div>
+        </div>
+        
     </section>
 </template>
         
@@ -218,5 +218,52 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 @import 'src/style/home';
+.row_flex {
+    align-items: flex-start;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-family: Roboto, Lato, sans-serif;
+    font-size: 14px;
+    justify-content: flex-start;
+    -webkit-text-size-adjust: 100%;
+    -webkit-box-align: start;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: start;
+}
+.row_flex_1 {
+    box-sizing: border-box;
+    display: block;
+    flex-basis: 33.33%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    max-width: 33.33%;
+    min-width: 375px;
+    position: relative;
+    font-family: Roboto, Lato, sans-serif;
+    font-size: 14px;
+    -webkit-box-direction: normal;
+    -webkit-box-flex: 0;
+}
+.row_flex_img {
+    max-width: 100%;
+}
+.txt_h3 {
+    font-size: 21px;
+    font-family: Roboto, Lato, sans-serif;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
 
+}
+.txt_h4 {
+    font-size: 18px;
+    font-family: Roboto, Lato, sans-serif;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+    
+}
 </style>

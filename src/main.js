@@ -18,6 +18,9 @@ import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 import theme from 'muse-ui/lib/theme'
 import * as colors from 'muse-ui/lib/theme/colors'
+import fullCalendar from 'vue-fullcalendar'
+
+Vue.component('full-calendar', fullCalendar)
 
 theme.add('custom-theme', {
   primary: colors.indigo,

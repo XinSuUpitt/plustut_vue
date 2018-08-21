@@ -5,9 +5,8 @@
             <mu-button icon slot="left" @click="open = !open">
                 <mu-icon value="menu"></mu-icon>
             </mu-button>
-            Title
             <mu-menu slot="right">
-                <mu-button flat>MENU</mu-button>
+                <mu-icon value="account_circle" color="white" style="margin-right: 10px; margin-top:10px" size="48"></mu-icon>
                 <mu-list slot="content">
                 <mu-list-item button>
                     <mu-list-item-content>
@@ -25,30 +24,20 @@
 
             <mu-drawer :open.sync="open" :docked="docked" :right="position === 'right'">
                 <mu-list>
-                <mu-list-item>
-                    <router-link to="/">
-                        <mu-list-item-title>主页</mu-list-item-title>
-                    </router-link>
+                <mu-list-item @click="goHome()" button>
+                    <mu-list-item-title>主页</mu-list-item-title>
                 </mu-list-item>
-                <mu-list-item>
-                    <router-link to="/classes">
-                        <mu-list-item-title>课程</mu-list-item-title>
-                    </router-link>
+                <mu-list-item @click="goClasses()" button>
+                    <mu-list-item-title>课程</mu-list-item-title>
                 </mu-list-item>
-                <mu-list-item>
-                    <router-link to="/me">
-                        <mu-list-item-title>我</mu-list-item-title>
-                    </router-link>
+                <mu-list-item @click="goMe()" button>
+                    <mu-list-item-title>我</mu-list-item-title>
                 </mu-list-item>
-                <mu-list-item>
-                    <router-link to="/me">
-                        <mu-list-item-title>关于我们</mu-list-item-title>
-                    </router-link>
+                <mu-list-item @click="goAboutUs()" button>
+                    <mu-list-item-title>关于我们</mu-list-item-title>
                 </mu-list-item>
-                <mu-list-item>
-                    <router-link to="/calender">
-                        <mu-list-item-title>calender</mu-list-item-title>
-                    </router-link>
+                <mu-list-item @click="goCalendar()" button>
+                    <mu-list-item-title>日历</mu-list-item-title>
                 </mu-list-item>
                 <mu-list-item  @click="open = false" button>
                     <mu-list-item-title>Close</mu-list-item-title>
@@ -98,6 +87,24 @@ export default {
             }
         }
     },
+    methods: {
+        goHome() {
+            console.log('gohome')
+            this.$router.push("/")
+        },
+        goClasses() {
+            this.$router.push("/classes")
+        },
+        goMe() {
+            this.$router.push("/me")
+        },
+        goAboutUs() {
+            this.$router.push("/aboutus")
+        },
+        goCalendar() {
+            this.$router.push("/calender")
+        }
+    }
 }
 </script>
 
@@ -117,5 +124,8 @@ export default {
     opacity: 0;
     -webkit-transform: translate(-100%, 0);
     transform: translate(-100%, 0);
+}
+.account_icon {
+    size: 56
 }
 </style>
