@@ -89,7 +89,6 @@ export default {
     },
     methods: {
         goHome() {
-            console.log('gohome')
             this.$router.push("/")
         },
         goClasses() {

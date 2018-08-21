@@ -1,85 +1,233 @@
 <template>
-    <section class="classes">
-        <div id="search">
-            <router-link to="/search">
-                <div class="search_input">
-                    <i class="iconfont icon-sousuo1"></i>搜索
-                </div>
-            </router-link>
-        </div>
-        <Loading :loading="loading" />
-        <section class="video_list">
-            <div class="video_list_header">
-                <h3>我的课程<span>({{classLength}})</span></h3>
-                <router-link to="/all">更多 <i class="iconfont icon-jiantouyou"></i></router-link>
-            </div>
+    <section>
+        <mu-tabs :value.sync="active2" color="green" indicator-color="yellow" full-width style="width: 100%; height: 50px; background: linear-gradient(to right, #33ccff -6%, #303f9f 100%);">
+            <mu-tab>小学课程</mu-tab>
+            <mu-tab>中学课程</mu-tab>
+            <mu-tab>我的课程</mu-tab>
+        </mu-tabs>
+        <div class="demo-text" v-if="active2 === 0">
+            <mu-list class="row_flex">
+                <mu-card class="row_flex_1">
+                    <mu-card-header title="佟泽洲" sub-title="金牌教师">
+                        <mu-avatar slot="avatar">
+                        <img src="../assets/plustut_logo.png">
+                        </mu-avatar>
+                    </mu-card-header>
+                    <mu-card-media title="小学英语一年级" sub-title="">
+                        <img src="../assets/home_3.jpg">
+                    </mu-card-media>
+                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
+                    <mu-card-text>
+                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
+                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
+                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
+                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+                    </mu-card-text>
+                    <mu-card-actions>
+                        <mu-button color="primary">添加到我的课程</mu-button>
+                    </mu-card-actions>
+                </mu-card>
+
+                <mu-card class="row_flex_1">
+                    <mu-card-header title="佟泽洲" sub-title="金牌教师">
+                        <mu-avatar slot="avatar">
+                        <img src="../assets/plustut_logo.png">
+                        </mu-avatar>
+                    </mu-card-header>
+                    <mu-card-media title="小学数学2年级" sub-title="">
+                        <img src="../assets/home_3.jpg">
+                    </mu-card-media>
+                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
+                    <mu-card-text>
+                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
+                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
+                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
+                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+                    </mu-card-text>
+                    <mu-card-actions>
+                        <mu-button color="primary">添加到我的课程</mu-button>
+                    </mu-card-actions>
+                </mu-card>
+
+                <mu-card class="row_flex_1">
+                    <mu-card-header title="任婉暄" sub-title="金牌教师">
+                        <mu-avatar slot="avatar">
+                        <img src="../assets/plustut_logo.png">
+                        </mu-avatar>
+                    </mu-card-header>
+                    <mu-card-media title="小学数学6年级" sub-title="">
+                        <img src="../assets/home_3.jpg">
+                    </mu-card-media>
+                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
+                    <mu-card-text>
+                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
+                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
+                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
+                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+                    </mu-card-text>
+                    <mu-card-actions>
+                        <mu-button color="primary">添加到我的课程</mu-button>
+                    </mu-card-actions>
+                </mu-card>
+
+                <mu-card class="row_flex_1">
+                    <mu-card-header title="佟泽洲" sub-title="金牌教师">
+                        <mu-avatar slot="avatar">
+                        <img src="../assets/plustut_logo.png">
+                        </mu-avatar>
+                    </mu-card-header>
+                    <mu-card-media title="小学英语3年级" sub-title="">
+                        <img src="../assets/home_3.jpg">
+                    </mu-card-media>
+                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
+                    <mu-card-text>
+                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
+                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
+                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
+                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+                    </mu-card-text>
+                    <mu-card-actions>
+                        <mu-button color="primary">添加到我的课程</mu-button>
+                    </mu-card-actions>
+                </mu-card>
+
+                <mu-card class="row_flex_1">
+                    <mu-card-header title="佟泽洲" sub-title="金牌教师">
+                        <mu-avatar slot="avatar">
+                        <img src="../assets/plustut_logo.png">
+                        </mu-avatar>
+                    </mu-card-header>
+                    <mu-card-media title="小学数学5年级" sub-title="">
+                        <img src="../assets/home_3.jpg">
+                    </mu-card-media>
+                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
+                    <mu-card-text>
+                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
+                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
+                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
+                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+                    </mu-card-text>
+                    <mu-card-actions>
+                        <mu-button color="primary">添加到我的课程</mu-button>
+                    </mu-card-actions>
+                </mu-card>
+
+                <mu-card class="row_flex_1">
+                    <mu-card-header title="任婉暄" sub-title="金牌教师">
+                        <mu-avatar slot="avatar">
+                        <img src="../assets/plustut_logo.png">
+                        </mu-avatar>
+                    </mu-card-header>
+                    <mu-card-media title="小学数学3年级" sub-title="">
+                        <img src="../assets/home_3.jpg">
+                    </mu-card-media>
+                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
+                    <mu-card-text>
+                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
+                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
+                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
+                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+                    </mu-card-text>
+                    <mu-card-actions>
+                        <mu-button color="primary">添加到我的课程</mu-button>
+                    </mu-card-actions>
+                </mu-card>
+            </mu-list>
             
-            <div @click="addClass">
-                <label>{{lists[0].class_name}}</label>
-            </div>
-           
-        </section>
-        <section class="video_list">
-            <div class="video_list_header">
-                <h3>小学课程<span>({{classLength}})</span></h3>
-                <router-link to="/elementaryclass">更多 <i class="iconfont icon-jiantouyou"></i></router-link>
-            </div>
-            <!--
-            <ul>
-                <li :key="list.id"  v-for="(list,index) in lists[0]"  v-if="index < 10">
-                    <router-link :to="'/video/'+list.id">
-                        <div class="preImg"><img v-lazy="baseUrl+list.img" alt=""></div>
-                        <h3>{{list.name}}</h3>
-                        <div>
-                            <div class="starList" :style="{'background-position-y':-15*(10-list.star).toFixed(0)+'px'}"></div>
-                            <span>{{list.star}}</span>
-                        </div>
-                    </router-link>
-                </li>
-            </ul>
-            -->
-        </section>
-        <section class="video_list">
-            <div class="video_list_header">
-                <h3>中学课程<span>({{classLength}})</span></h3>
-                <router-link to="/middleclass">更多 <i class="iconfont icon-jiantouyou"></i></router-link>
-            </div>
-            <!--
-            <ul>
-                <li :key="list.id" v-for="(list,index) in lists[1]"  v-if="index < 10">
-                    <router-link :to="'/video/'+list.id">
-                        <div class="preImg"><img v-lazy="baseUrl+list.img" alt=""></div>
-                        <h3>{{list.name}}</h3>
-                        <div>
-                            <div class="starList" :style="{'background-position-y':-15*(10-list.star).toFixed(0)+'px'}"></div>
-                            <span>{{list.star}}</span>
-                        </div>
-                    </router-link>
-                </li>
-            </ul>
-            -->
-        </section>
-                <mu-container>
-            <mu-card style="width: 100%; max-width: 375px; margin: 0 auto;">
-            <mu-card-header title="Myron Avatar" sub-title="sub title">
-                <mu-avatar slot="avatar">
-                </mu-avatar>
-            </mu-card-header>
-            <mu-card-media title="Image Title" sub-title="Image Sub Title">
-            </mu-card-media>
-            <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
-            <mu-card-text>
-                散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
-                调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
-                似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
-                找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-            </mu-card-text>
-            <mu-card-actions>
-                <mu-button flat>Action 1</mu-button>
-                <mu-button flat>Action 2</mu-button>
-            </mu-card-actions>
-            </mu-card>
-        </mu-container>
+        </div>
+        <div class="demo-text" v-if="active2 === 1">
+            <mu-list class="row_flex">
+                <mu-card class="row_flex_1">
+                    <mu-card-header title="佟泽洲" sub-title="金牌教师">
+                        <mu-avatar slot="avatar">
+                        <img src="../assets/plustut_logo.png">
+                        </mu-avatar>
+                    </mu-card-header>
+                    <mu-card-media title="中学英语一年级" sub-title="">
+                        <img src="../assets/home_3.jpg">
+                    </mu-card-media>
+                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
+                    <mu-card-text>
+                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
+                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
+                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
+                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+                    </mu-card-text>
+                    <mu-card-actions>
+                        <mu-button color="primary">添加到我的课程</mu-button>
+                    </mu-card-actions>
+                </mu-card>
+
+                <mu-card class="row_flex_1">
+                    <mu-card-header title="佟泽洲" sub-title="金牌教师">
+                        <mu-avatar slot="avatar">
+                        <img src="../assets/plustut_logo.png">
+                        </mu-avatar>
+                    </mu-card-header>
+                    <mu-card-media title="中学数学2年级" sub-title="">
+                        <img src="../assets/home_3.jpg">
+                    </mu-card-media>
+                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
+                    <mu-card-text>
+                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
+                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
+                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
+                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+                    </mu-card-text>
+                    <mu-card-actions>
+                        <mu-button color="primary">添加到我的课程</mu-button>
+                    </mu-card-actions>
+                </mu-card>
+
+                <mu-card class="row_flex_1">
+                    <mu-card-header title="任婉暄" sub-title="金牌教师">
+                        <mu-avatar slot="avatar">
+                        <img src="../assets/plustut_logo.png">
+                        </mu-avatar>
+                    </mu-card-header>
+                    <mu-card-media title="中学数学6年级" sub-title="">
+                        <img src="../assets/home_3.jpg">
+                    </mu-card-media>
+                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
+                    <mu-card-text>
+                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
+                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
+                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
+                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+                    </mu-card-text>
+                    <mu-card-actions>
+                        <mu-button color="primary">添加到我的课程</mu-button>
+                    </mu-card-actions>
+                </mu-card>
+
+                <mu-card class="row_flex_1">
+                    <mu-card-header title="佟泽洲" sub-title="金牌教师">
+                        <mu-avatar slot="avatar">
+                        <img src="../assets/plustut_logo.png">
+                        </mu-avatar>
+                    </mu-card-header>
+                    <mu-card-media title="中学英语3年级" sub-title="">
+                        <img src="../assets/home_3.jpg">
+                    </mu-card-media>
+                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
+                    <mu-card-text>
+                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
+                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
+                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
+                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+                    </mu-card-text>
+                    <mu-card-actions>
+                        <mu-button color="primary">添加到我的课程</mu-button>
+                    </mu-card-actions>
+                </mu-card>
+            </mu-list>
+        </div>
+        <div class="demo-text" v-if="active2 === 2">
+            <p>“不，这泪水……是因为勇气，因为力量，因为信任，……你不会懂的！”</p>
+            <p>“我不会帮你，想要什么样的未来……自己去追寻吧！”</p>
+            <p>“我不需要你的帮忙！未来我会一手开启，什么样的敌人我也不会惧怕……还有，其实我们可以成为朋友的……”</p>
+            <p>“也许吧，未来……给你了。”</p>
+        </div>
     </section>
 </template>
 
@@ -97,6 +245,7 @@ export default {
             lists: '',
             loading: true,
             baseUrl:url + '/images/',
+            active2: 0
         }
     },
     computed:{
@@ -171,7 +320,47 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style lang="scss" scoped>
+<style lang="scss">
 @import 'src/style/classes';
-
+.demo-text {
+  padding: 16px;
+  background: #fff;
+  p {
+    margin: 8px 0;
+  }
+}
+.row_flex {
+    align-items: flex-start;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    font-family: Roboto, Lato, sans-serif;
+    font-size: 14px;
+    justify-content: center;
+    -webkit-text-size-adjust: 100%;
+    -webkit-box-align: start;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: start;
+}
+.row_flex_1 {
+    box-sizing: border-box;
+    align-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    justify-content: center;
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 0;
+    max-width: 31%;
+    min-width: 375px;
+    position: relative;
+    font-family: Roboto, Lato, sans-serif;
+    font-size: 14px;
+    -webkit-box-direction: normal;
+    -webkit-box-flex: 0;
+    -webkit-box-align: center;
+}
 </style>

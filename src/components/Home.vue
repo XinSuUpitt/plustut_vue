@@ -8,6 +8,7 @@
                     <img src="../assets/plustut_logo.png">
                 </mu-avatar>
             </mu-row>
+            <h2 class="txt_h2">一站式中港补习直通车</h2>
         </div>
 
         <div class="row_flex">
@@ -190,10 +191,6 @@ export default {
                     initVideoData: list
                 })
             }).catch(e => {
-                this.$toast({
-                    icon: 'fail',
-                    message: e.message
-                })
             })
             await initTeachers().then(res => {
                 console.log('teachers', res)
@@ -249,6 +246,17 @@ export default {
 }
 .row_flex_img {
     max-width: 100%;
+}
+.txt_h2 {
+    margin-top: 20px;
+    font-weight: 300;
+    font-size: 30px;
+    font-style: bold;
+    font-family: Roboto, Lato, sans-serif;
+    text-align: center;
+    display: block;
+    box-sizing: border-box;
+
 }
 .txt_h3 {
     font-size: 21px;
