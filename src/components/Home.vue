@@ -223,7 +223,7 @@ export default {
     flex-wrap: wrap;
     font-family: Roboto, Lato, sans-serif;
     font-size: 14px;
-    justify-content: flex-start;
+    justify-content: center;
     -webkit-text-size-adjust: 100%;
     -webkit-box-align: start;
     -webkit-box-direction: normal;
@@ -233,10 +233,10 @@ export default {
 .row_flex_1 {
     box-sizing: border-box;
     display: block;
-    flex-basis: 33.33%;
+    flex-basis: 30%;
     flex-grow: 0;
     flex-shrink: 0;
-    max-width: 33.33%;
+    max-width: 30%;
     min-width: 375px;
     position: relative;
     font-family: Roboto, Lato, sans-serif;

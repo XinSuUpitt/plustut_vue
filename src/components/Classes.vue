@@ -5,9 +5,8 @@
             <mu-tab>中学课程</mu-tab>
             <mu-tab>我的课程</mu-tab>
         </mu-tabs>
-        <div class="demo-text" v-if="active2 === 0">
-            <mu-list class="row_flex">
-                <mu-card class="row_flex_1">
+        <div class="row_flex" v-if="active2 === 0">
+            <mu-card class="row_flex_1">
                     <mu-card-header title="佟泽洲" sub-title="金牌教师">
                         <mu-avatar slot="avatar">
                         <img src="../assets/plustut_logo.png">
@@ -132,12 +131,10 @@
                         <mu-button color="primary">添加到我的课程</mu-button>
                     </mu-card-actions>
                 </mu-card>
-            </mu-list>
             
         </div>
-        <div class="demo-text" v-if="active2 === 1">
-            <mu-list class="row_flex">
-                <mu-card class="row_flex_1">
+        <div class="row_flex" v-if="active2 === 1">
+            <mu-card class="row_flex_1">
                     <mu-card-header title="佟泽洲" sub-title="金牌教师">
                         <mu-avatar slot="avatar">
                         <img src="../assets/plustut_logo.png">
@@ -220,7 +217,6 @@
                         <mu-button color="primary">添加到我的课程</mu-button>
                     </mu-card-actions>
                 </mu-card>
-            </mu-list>
         </div>
         <div class="demo-text" v-if="active2 === 2">
             <p>“不，这泪水……是因为勇气，因为力量，因为信任，……你不会懂的！”</p>
@@ -279,10 +275,6 @@ export default {
                     initVideoData: list
                 })
             }).catch(e => {
-                this.$toast({
-                    icon: 'fail',
-                    message: e.message
-                })
             })
             await initTeachers().then(res => {
                 console.log('teachers', res)
@@ -323,14 +315,10 @@ export default {
 <style lang="scss">
 @import 'src/style/classes';
 .demo-text {
-  padding: 16px;
-  background: #fff;
-  p {
-    margin: 8px 0;
-  }
+  width: 100%;
 }
 .row_flex {
-    align-items: flex-start;
+    align-items: center;
     box-sizing: border-box;
     display: flex;
     flex-direction: row;
@@ -339,28 +327,26 @@ export default {
     font-size: 14px;
     justify-content: center;
     -webkit-text-size-adjust: 100%;
-    -webkit-box-align: start;
+    -webkit-box-align: center;
     -webkit-box-direction: normal;
     -webkit-box-orient: horizontal;
-    -webkit-box-pack: start;
+    -webkit-box-pack: center;
 }
 .row_flex_1 {
     box-sizing: border-box;
-    align-content: center;
+    display: block;
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
-    justify-content: center;
-    display: block;
+    margin-top: 10px;
+    flex-basis: 31%;
     flex-grow: 0;
     flex-shrink: 0;
     max-width: 31%;
     min-width: 375px;
-    position: relative;
     font-family: Roboto, Lato, sans-serif;
     font-size: 14px;
     -webkit-box-direction: normal;
     -webkit-box-flex: 0;
-    -webkit-box-align: center;
 }
 </style>
