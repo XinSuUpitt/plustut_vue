@@ -20,7 +20,7 @@
             <div slot="header">名师介绍</div>
             <mu-expansion-panel :expand="panel === 'panel4'" @change="toggle('panel4')">
                 <div slot="header">佟泽洲</div>
-                Plustut全科金牌导师，本科毕业于香港理工大学，原阿里巴巴（香港）商务分析师及企业培训师，致力于为跨境学童学习提供综合性解决提升方案，整合知识体系，提升学习效率，短时间内提高学生学业成绩。
+                Plustut全科金牌导师，本科毕业于香港大学，原阿里巴巴（香港）商务分析师及企业培训师，致力于为跨境学童学习提供综合性解决提升方案，整合知识体系，提升学习效率，短时间内提高学生学业成绩。
             </mu-expansion-panel>
             <mu-expansion-panel :expand="panel === 'panel4'" @change="toggle('panel4')">
                 <div slot="header">任婉瑄</div>
@@ -53,7 +53,7 @@
         <mu-expansion-panel :expand="panel === 'panel1'" @change="toggle('panel1')">
             <div slot="header">公司地址</div>
             广东省深圳市海悦华城a座3502室
-            
+
         </mu-expansion-panel>
     </section>
 </template>

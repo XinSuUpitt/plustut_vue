@@ -5,133 +5,24 @@
             <mu-tab>中学课程</mu-tab>
             <mu-tab>我的课程</mu-tab>
         </mu-tabs>
-        <div class="row_flex" v-if="active2 === 0">
+        <div class="row_flex" v-if="active2 === 0" v-for="elementary in elementaries" :key="elementary.id">
             <mu-card class="row_flex_1">
-                    <mu-card-header title="佟泽洲" sub-title="金牌教师">
+                    <mu-card-header :title="elementary.teacher_id" sub-title="金牌教师">
                         <mu-avatar slot="avatar">
                         <img src="../assets/plustut_logo.png">
                         </mu-avatar>
                     </mu-card-header>
-                    <mu-card-media title="小学英语一年级" sub-title="">
+                    <mu-card-media :title="elementary.class_name" sub-title="">
                         <img src="../assets/home_3.jpg">
                     </mu-card-media>
-                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
+                    <mu-card-title title="elementary.description" sub-title="Content Title">{{elementary.price}}</mu-card-title>
                     <mu-card-text>
-                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
-                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
-                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
-                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
+                        {{elementary.description}}
                     </mu-card-text>
                     <mu-card-actions>
                         <mu-button color="primary">添加到我的课程</mu-button>
                     </mu-card-actions>
-                </mu-card>
-
-                <mu-card class="row_flex_1">
-                    <mu-card-header title="佟泽洲" sub-title="金牌教师">
-                        <mu-avatar slot="avatar">
-                        <img src="../assets/plustut_logo.png">
-                        </mu-avatar>
-                    </mu-card-header>
-                    <mu-card-media title="小学数学2年级" sub-title="">
-                        <img src="../assets/home_3.jpg">
-                    </mu-card-media>
-                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
-                    <mu-card-text>
-                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
-                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
-                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
-                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-                    </mu-card-text>
-                    <mu-card-actions>
-                        <mu-button color="primary">添加到我的课程</mu-button>
-                    </mu-card-actions>
-                </mu-card>
-
-                <mu-card class="row_flex_1">
-                    <mu-card-header title="任婉暄" sub-title="金牌教师">
-                        <mu-avatar slot="avatar">
-                        <img src="../assets/plustut_logo.png">
-                        </mu-avatar>
-                    </mu-card-header>
-                    <mu-card-media title="小学数学6年级" sub-title="">
-                        <img src="../assets/home_3.jpg">
-                    </mu-card-media>
-                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
-                    <mu-card-text>
-                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
-                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
-                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
-                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-                    </mu-card-text>
-                    <mu-card-actions>
-                        <mu-button color="primary">添加到我的课程</mu-button>
-                    </mu-card-actions>
-                </mu-card>
-
-                <mu-card class="row_flex_1">
-                    <mu-card-header title="佟泽洲" sub-title="金牌教师">
-                        <mu-avatar slot="avatar">
-                        <img src="../assets/plustut_logo.png">
-                        </mu-avatar>
-                    </mu-card-header>
-                    <mu-card-media title="小学英语3年级" sub-title="">
-                        <img src="../assets/home_3.jpg">
-                    </mu-card-media>
-                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
-                    <mu-card-text>
-                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
-                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
-                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
-                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-                    </mu-card-text>
-                    <mu-card-actions>
-                        <mu-button color="primary">添加到我的课程</mu-button>
-                    </mu-card-actions>
-                </mu-card>
-
-                <mu-card class="row_flex_1">
-                    <mu-card-header title="佟泽洲" sub-title="金牌教师">
-                        <mu-avatar slot="avatar">
-                        <img src="../assets/plustut_logo.png">
-                        </mu-avatar>
-                    </mu-card-header>
-                    <mu-card-media title="小学数学5年级" sub-title="">
-                        <img src="../assets/home_3.jpg">
-                    </mu-card-media>
-                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
-                    <mu-card-text>
-                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
-                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
-                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
-                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-                    </mu-card-text>
-                    <mu-card-actions>
-                        <mu-button color="primary">添加到我的课程</mu-button>
-                    </mu-card-actions>
-                </mu-card>
-
-                <mu-card class="row_flex_1">
-                    <mu-card-header title="任婉暄" sub-title="金牌教师">
-                        <mu-avatar slot="avatar">
-                        <img src="../assets/plustut_logo.png">
-                        </mu-avatar>
-                    </mu-card-header>
-                    <mu-card-media title="小学数学3年级" sub-title="">
-                        <img src="../assets/home_3.jpg">
-                    </mu-card-media>
-                    <mu-card-title title="Content Title" sub-title="Content Title"></mu-card-title>
-                    <mu-card-text>
-                        散落在指尖的阳光，我试着轻轻抓住光影的踪迹，它却在眉宇间投下一片淡淡的阴影。
-                        调皮的阳光掀动了四月的心帘，温暖如约的歌声渐起。
-                        似乎在诉说着，我也可以在漆黑的角落里，找到阴影背后的阳光，
-                        找到阳光与阴影奏出和谐的旋律。我要用一颗敏感赤诚的心迎接每一缕滑过指尖的阳光！
-                    </mu-card-text>
-                    <mu-card-actions>
-                        <mu-button color="primary">添加到我的课程</mu-button>
-                    </mu-card-actions>
-                </mu-card>
-            
+                </mu-card>   
         </div>
         <div class="row_flex" v-if="active2 === 1">
             <mu-card class="row_flex_1">
@@ -229,7 +120,7 @@
 
 <script>
 import Loading from './common/Loading.vue'
-import { url,initHome,getAvator, initTeachers, initClasses, addClass ,getStudentClass} from '../data/fetchData'
+import { url, initClasses, addClass ,getStudentClass} from '../data/fetchData'
 import { mapActions ,mapState } from 'vuex'
 export default {
     name: 'home',
@@ -241,7 +132,9 @@ export default {
             lists: '',
             loading: true,
             baseUrl:url + '/images/',
-            active2: 0
+            active2: 0,
+            elementaries: [],
+            middles: []
         }
     },
     computed:{
@@ -254,33 +147,36 @@ export default {
     },
     created () {
 
-        if (this.videoData != null) {
-            this.lists = this.videoData
-        }else{
-        //    this.initData()
-            this.getStudentClass()
-        }
+        this.initData()
+        this.getStudentClass()
+        console.log('classes', this.elementaries, 'middles', this.middles);
     },
     watch: {
         // 如果路由有变化，会再次执行该方法
         //'$route': 'initData'
     },
     methods:{
-        async initData () {
+        initData () {
             this.loading = true
-            await initClasses().then(res =>  {
+            initClasses().then(res =>  {
                 let list = res.data
                 this.lists = list
-                console.log('classes', this.lists[0]);
-                this.$store.dispatch('initVideoData',{
-                    initVideoData: list
-                })
+                var elementaryList = [];
+                var middleList = [];
+                for (var i = 0; i < this.lists.length; i++) {
+                    if (this.lists[i].elementary === 0) {
+                        elementaryList.push(this.lists[i]);
+                    } else {
+                        middleList.push(this.lists[i]);
+                    }
+                }
+                this.elementaries = elementaryList;
+                this.middles = middleList;
+                // this.$store.dispatch('initVideoData',{
+                //     initVideoData: list
+                // })
             }).catch(e => {
-            })
-            await initTeachers().then(res => {
-                console.log('teachers', res)
-            }).catch(e => {
-                console.log('teachers error', e.message)
+                console.log('error', e.message)
             })
             setTimeout(()=>{
                 this.loading = false;
