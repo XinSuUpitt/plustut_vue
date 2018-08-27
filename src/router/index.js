@@ -9,6 +9,7 @@ import Detail from '@/components/Detail'
 import Classes from '@/components/Classes'
 import Calender from '@/components/Calender'
 import AboutUs from '@/components/AboutUs'
+import Register from '@/components/Register'
 // const Home = r => require.ensure([], () => r(require('../components/Home')), 'Home')
 // const More = r => require.ensure([], () => r(require('../components/More')), 'More')
 // const Me = r => require.ensure([], () => r(require('../components/Me')), 'Me')
@@ -138,6 +139,14 @@ export default new Router({
             component: AboutUs,
             meta: {
                 index: 7
+            }
+        },
+        {
+            path: '/register',
+            name: 'register',
+            component: Register,
+            meta: {
+                index: 8
             }
         }
     ],

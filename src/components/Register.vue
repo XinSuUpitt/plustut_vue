@@ -3,7 +3,7 @@
         <section class="main_wrap">
             <section class="user_title">
                 <i class="iconfont icon-denglu"></i>
-                <h3>登录</h3>
+                <h3>新用户注册</h3>
             </section>
             <section class="user">
                 <form  enctype='multipart/form-data'>
@@ -16,9 +16,12 @@
                             <i class="iconfont icon-mima1"></i>
                             <input type="password" v-model="password" @keyup.enter="signin" name="password" placeholder="密码">
                         </div>
+                        <div class="input_wrap">
+                            <i class="iconfont icon-mima1"></i>
+                            <input type="password" v-model="confirm_password" @keyup.enter="signin" name="confirm password" placeholder="确认密码">
+                        </div>
                     </div>
-                    <div class="submit" @click="signin">立即登录</div> 
-                    <div class="register" @click="register">新用户？点击注册</div>
+                    <div class="submit" @click="signin">立即注册</div> 
                </form>
             </section>
         </section> 
@@ -27,15 +30,16 @@
 
 <script>
 import {mapActions,mapState} from 'vuex'
-import { signin , yzmChange, checkUser,url } from '../data/fetchData.js'
+import { register , yzmChange, checkUser,url } from '../data/fetchData.js'
 export default {
-    name: 'login',
+    name: 'register',
     data () {
         return {
             lists: '',
             loading: false,
             userName: '',
             password: '',
+            confirm_password: '',
             yzm: '',
             yzmTest: '',
             url: ''
@@ -51,7 +55,6 @@ export default {
             this.$router.push('/me')
         }
         this.url = url + '/images/yzm.jpg'
-        this.changYzm()
     },
     methods:{
         // 登录 
@@ -63,7 +66,14 @@ export default {
                 }) 
                 return 
             }
-            signin(this.userName,this.password).then(data => {
+            if (this.password !== this.confirm_password) {
+                this.$toast({
+                    icon:'fail',
+                    message:'密码不匹配'
+                }) 
+                return 
+            }
+            register(this.userName,this.password).then(data => {
                 // 用户存在
                 if (data.code == 200) {
                     this.$toast({
@@ -80,13 +90,19 @@ export default {
                     // console.log(document.cookie)
                     localStorage.setItem('user',this.userName)
                     localStorage.setItem('avator',data.avator)
-                }else {
+                }else if(data.code == 201){
+                    //新用户
                     this.$toast({
-                        icon:'fail',
-                        message:'登录失败',
+                        icon:'success',
+                        message:'注册成功',
                         success:()=>{
+                            this.$router.push({path:'/me'})
                         }
                     }) 
+                    document.cookie = `token=${data.token};max-age=${30*24*60*60*1000}`
+                    
+                    localStorage.setItem('user',this.userName)
+
                 }
             }).catch(e=>{
                 this.$toast({
@@ -94,17 +110,6 @@ export default {
                     message: e.message
                 }) 
             })
-        },
-        // 验证码切换
-        changYzm () {
-            yzmChange().then(res=>{
-                this.yzmTest = res.data;
-                this.url = url+'/images/yzm.jpg'+'?v='+ (new Date).getTime()
-                console.log('验证码',this.yzmTest)
-            })
-        },
-        register() {
-            this.$router.push("/register")
         }
     }
 }

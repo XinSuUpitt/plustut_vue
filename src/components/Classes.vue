@@ -229,7 +229,7 @@
 
 <script>
 import Loading from './common/Loading.vue'
-import { url,initHome,getAvator, initTeachers, initClasses, addClass } from '../data/fetchData'
+import { url,initHome,getAvator, initTeachers, initClasses, addClass ,getStudentClass} from '../data/fetchData'
 import { mapActions ,mapState } from 'vuex'
 export default {
     name: 'home',
@@ -257,7 +257,8 @@ export default {
         if (this.videoData != null) {
             this.lists = this.videoData
         }else{
-           this.initData()
+        //    this.initData()
+            this.getStudentClass()
         }
     },
     watch: {
@@ -306,6 +307,14 @@ export default {
                                     message:e.message,
                                 }) 
                             })
+        },
+
+        getStudentClass() {
+            getStudentClass(1).then(res => {
+                console.log('student class', res);
+            }).catch(e => {
+
+            })
         }
     }
 }

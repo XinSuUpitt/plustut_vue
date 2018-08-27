@@ -157,10 +157,6 @@ export default {
                     this.comments = data
             }).catch(e => {   
                 this.loading = false;                
-                this.$toast({
-                    icon:'fail',
-                    message:e.message
-                }) 
             })
             // 获取喜欢不喜欢数据
             await meLike(userName).then(res =>  {
@@ -170,10 +166,6 @@ export default {
                 this.likeLengthTwo = data[1].length
             }).catch(e => {
                 this.loading = false;                               
-                this.$toast({
-                    icon:'fail',
-                    message:e.message
-                })
             })
             await getAvator(userName).then(data => {
                this.avator = data.avator

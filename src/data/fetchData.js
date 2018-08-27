@@ -1,6 +1,6 @@
 import axios from 'axios'
-// export const url = 'http://localhost:3000';
-export const url = 'http://www.plustutedu.com:3000';
+export const url = 'http://localhost:3000';
+// export const url = 'http://www.plustutedu.com:3000';
 let $axios = axios.create({
   baseURL: url + '/api/'
 });
@@ -49,8 +49,11 @@ export const addClass = (student_id, teacher_id) => $fetch('post', 'addClass', {
 // 验证码
 export const yzmChange = () => $fetch('get','getYzm')
 
-// 注册登录
+// 登录
 export const signin = (userName, password) => $fetch('post','signin', {userName,password})
+
+//注册
+export const register = (userName, password) => $fetch('post','register', {userName,password})
 
 // 个人评论
 export const meComment = (userName) => $fetch('post', 'getUserComment', {userName})
@@ -90,5 +93,7 @@ export const postVideoLikeData = (videoId, like, userName, videoName, videoImg, 
 
 // 发表评论
 export const reportComment = (videoId, userName, content, videoName, avator) => $fetch('post', 'postComment', {videoId,userName,content, videoName,avator})
+
+export const getStudentClass = (student_id) => $fetch('post', 'getStudentClass', {student_id})
 
 
