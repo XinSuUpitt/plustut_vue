@@ -20,7 +20,7 @@
                     {{elementary.description}}
                 </mu-card-text>
                 <mu-card-actions>
-                    <mu-button color="primary">添加到我的课程</mu-button>
+                    <mu-button color="primary" @click="addClass(elementary.id)">添加到我的课程</mu-button>
                 </mu-card-actions>
             </mu-card>   
         </div>
@@ -39,22 +39,32 @@
                     {{middle.description}}
                 </mu-card-text>
                 <mu-card-actions>
-                    <mu-button color="primary">添加到我的课程</mu-button>
+                    <mu-button color="primary" @click="addClass(middle.id)">添加到我的课程</mu-button>
                 </mu-card-actions>
             </mu-card> 
         </div>
-        <div class="demo-text" v-if="active2 === 2">
-            <p>“不，这泪水……是因为勇气，因为力量，因为信任，……你不会懂的！”</p>
-            <p>“我不会帮你，想要什么样的未来……自己去追寻吧！”</p>
-            <p>“我不需要你的帮忙！未来我会一手开启，什么样的敌人我也不会惧怕……还有，其实我们可以成为朋友的……”</p>
-            <p>“也许吧，未来……给你了。”</p>
+        <div class="row_flex" v-if="active2 === 2" v-for="myclass in myClasses" :key="myclass.id">
+            <mu-card class="row_flex_1">
+                <mu-card-header :title="myclass.teacher_id" sub-title="金牌教师">
+                    <mu-avatar slot="avatar">
+                    <img src="../assets/plustut_logo.png">
+                    </mu-avatar>
+                </mu-card-header>
+                <mu-card-media :title="myclass.class_name" sub-title="">
+                    <img src="../assets/home_3.jpg">
+                </mu-card-media>
+                <mu-card-title :title="myclass.price" sub-title="课程费用"></mu-card-title>
+                <mu-card-text>
+                    {{myclass.description}}
+                </mu-card-text>
+            </mu-card>
         </div>
     </section>
 </template>
 
 <script>
 import Loading from './common/Loading.vue'
-import { url, initClasses, addClass ,getStudentClass, initTeachers} from '../data/fetchData'
+import { url, initClasses, addClass ,getStudentClass, initTeachers, getStudentId} from '../data/fetchData'
 import { mapActions ,mapState } from 'vuex'
 export default {
     name: 'home',
@@ -69,7 +79,10 @@ export default {
             active2: 0,
             elementaries: [],
             middles: [],
-            teachers: []
+            teachers: [],
+            userName: localStorage.user,
+            userId: 0,
+            myClasses: []
         }
     },
     computed:{
@@ -77,21 +90,27 @@ export default {
             return this.lists.length
         },
         ...mapState([
-            'videoData',
+            'userInfo',
         ]),
     },
     created () {
+        this.getStudentIdByName()
         this.getTeachers()
         this.initData()
         this.getStudentClass()
-        
-        console.log('classes', this.elementaries, 'middles', this.middles);
     },
     watch: {
         // 如果路由有变化，会再次执行该方法
         //'$route': 'initData'
     },
     methods:{
+        getStudentIdByName() {
+            getStudentId(this.userName).then(res => {
+                this.userId = res.data[0].id;
+            }).catch(e => {
+                console.log('cannot find student', e.message)
+            })
+        },
         initData () {
             this.loading = true
             initClasses().then(res =>  {
@@ -102,7 +121,6 @@ export default {
                 for (var i = 0; i < this.lists.length; i++) {
                     var teas = this.teachers[0];
                     for (var j = 0; j < teas.length; j++) {
-                        console.log('tear', teas[j]);
                         if (this.lists[i].teacher_id === teas[j].id) {
                             this.lists[i].teacher_id = teas[j].username;
                             break;
@@ -117,7 +135,6 @@ export default {
                 }
                 this.elementaries = elementaryList;
                 this.middles = middleList;
-                console.log('teachers', this.teachers);
                 // this.$store.dispatch('initVideoData',{
                 //     initVideoData: list
                 // })
@@ -136,9 +153,8 @@ export default {
             return jsonLength;
         },
 
-        addClass() {
-            console.log('add');
-            addClass(1,1).then(data=>{
+        addClass(class_id) {
+            addClass(this.userId,class_id).then(data=>{
                                 this.$toast({
                                     icon:'success',
                                     message:'添加成功'
@@ -152,11 +168,25 @@ export default {
         },
 
         getStudentClass() {
-            getStudentClass(1).then(res => {
-                console.log('student class', res);
+            getStudentId(this.userName).then(res => {
+                getStudentClass(res.data[0].id).then(res => {
+                    for (var i = 0; i < res.data.length; i++) {
+                        var iid = res.data[i].class_id;
+                        for (var j = 0; j < this.lists.length; j++) {
+                            if (this.lists[j].id === iid) {
+                                this.myClasses.push(this.lists[j]);
+                                break;
+                            }
+                        }
+                    }
+                    console.log('myclass', this.myClasses);
+                }).catch(e => {
+                    console.log('cannot get student classes', e.message)
+                })
             }).catch(e => {
-
+                console.log('cannot find student', e.message)
             })
+            
         },
 
         getTeachers() {

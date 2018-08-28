@@ -150,6 +150,7 @@ export default {
             size: 200,
             carouselImg1,
             carouselImg2,
+            active: 0
         }
     },
     computed:{

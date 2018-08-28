@@ -44,9 +44,11 @@ export const initTeachers = () => $fetch('get', 'getteachers')
 
 export const getTeacherName = (teacher_id) => $fetch('post', 'getteachers', {teacher_id})
 
+export const getStudentId = (name) => $fetch('post', 'getStudentIdByName', {name})
+
 export const initClasses = () => $fetch('get', 'getClasses')
 
-export const addClass = (student_id, teacher_id) => $fetch('post', 'addClass', {student_id, teacher_id})
+export const addClass = (student_id, class_id) => $fetch('post', 'addClass', {student_id, class_id})
 
 // 验证码
 export const yzmChange = () => $fetch('get','getYzm')
