@@ -1,6 +1,6 @@
 import axios from 'axios'
-// export const url = 'http://localhost:3000';
-export const url = 'http://www.plustutedu.com';
+export const url = 'http://localhost:3000';
+// export const url = 'http://www.plustutedu.com';
 let $axios = axios.create({
   baseURL: url + '/api/'
 });
@@ -41,6 +41,8 @@ export const initHome = () => $fetch('get', 'list')
 
 //获取教师列表
 export const initTeachers = () => $fetch('get', 'getteachers')
+
+export const getTeacherName = (teacher_id) => $fetch('post', 'getteachers', {teacher_id})
 
 export const initClasses = () => $fetch('get', 'getClasses')
 
