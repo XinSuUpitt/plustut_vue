@@ -63,190 +63,192 @@ import { Calendar, Weekday, Month, Sorts } from 'dayspan';
 import { url, initClasses,getStudentClass, getStudentId} from '../data/fetchData'
 export default {
   name: 'dayspan',
-  data: vm => ({
-    storeKey: 'dayspanState',
-    calendar: Calendar.months(),
-    userName: localStorage.user,
-    userId: 0,
-    myClasses: [],
-    lists: '',
-    defaultEvents: [
-      {
-        data: {
-          title: 'Weekly Meeting',
-          color: '#3F51B5'
+  data() {
+      return {
+      storeKey: 'dayspanState',
+      calendar: Calendar.months(),
+      userName: localStorage.user,
+      userId: 0,
+      myClasses: [],
+      lists: [],
+      defaultEvents: [
+        {
+          data: {
+            title: 'Weekly Meeting',
+            color: '#3F51B5'
+          },
+          schedule: {
+            dayOfWeek: [Weekday.MONDAY],
+            times: [9],
+            duration: 30,
+            durationUnit: 'minutes'
+          }
         },
-        schedule: {
-          dayOfWeek: [Weekday.MONDAY],
-          times: [9],
-          duration: 30,
-          durationUnit: 'minutes'
-        }
-      },
-      {
-        data: {
-          title: 'First Weekend',
-          color: '#4CAF50'
+        {
+          data: {
+            title: 'First Weekend',
+            color: '#4CAF50'
+          },
+          schedule: {
+            weekspanOfMonth: [0],
+            dayOfWeek: [Weekday.FRIDAY],
+            duration: 3,
+            durationUnit: 'days'
+          }
         },
-        schedule: {
-          weekspanOfMonth: [0],
-          dayOfWeek: [Weekday.FRIDAY],
-          duration: 3,
-          durationUnit: 'days'
-        }
-      },
-      {
-        data: {
-          title: 'End of Month',
-          color: '#000000'
+        {
+          data: {
+            title: 'End of Month',
+            color: '#000000'
+          },
+          schedule: {
+            lastDayOfMonth: [1],
+            duration: 1,
+            durationUnit: 'hours'
+          }
         },
-        schedule: {
-          lastDayOfMonth: [1],
-          duration: 1,
-          durationUnit: 'hours'
-        }
-      },
-      // {
-      //   data: {
-      //     title: 'Mother\'s Day',
-      //     color: '#2196F3',
-      //     calendar: 'US Holidays'
-      //   },
-      //   schedule: {
-      //     month: [Month.MAY],
-      //     dayOfWeek: [Weekday.SUNDAY],
-      //     weekspanOfMonth: [1]
-      //   }
-      // },
-      // {
-      //   data: {
-      //     title: 'New Year\'s Day',
-      //     color: '#2196F3',
-      //     calendar: 'US Holidays'
-      //   },
-      //   schedule: {
-      //     month: [Month.JANUARY],
-      //     dayOfMonth: [1]
-      //   }
-      // },
-      // {
-      //   data: {
-      //     title: 'Inauguration Day',
-      //     color: '#2196F3',
-      //     calendar: 'US Holidays'
-      //   },
-      //   schedule: {
-      //     month: [Month.JANUARY],
-      //     dayOfMonth: [20]
-      //   }
-      // },
-      // {
-      //   data: {
-      //     title: 'Martin Luther King, Jr. Day',
-      //     color: '#2196F3',
-      //     calendar: 'US Holidays'
-      //   },
-      //   schedule: {
-      //     month: [Month.JANUARY],
-      //     dayOfWeek: [Weekday.MONDAY],
-      //     weekspanOfMonth: [2]
-      //   }
-      // },
-      // {
-      //   data: {
-      //     title: 'George Washington\'s Birthday',
-      //     color: '#2196F3',
-      //     calendar: 'US Holidays'
-      //   },
-      //   schedule: {
-      //     month: [Month.FEBRUARY],
-      //     dayOfWeek: [Weekday.MONDAY],
-      //     weekspanOfMonth: [2]
-      //   }
-      // },
-      // {
-      //   data: {
-      //     title: 'Memorial Day',
-      //     color: '#2196F3',
-      //     calendar: 'US Holidays'
-      //   },
-      //   schedule: {
-      //     month: [Month.MAY],
-      //     dayOfWeek: [Weekday.MONDAY],
-      //     lastWeekspanOfMonth: [0]
-      //   }
-      // },
-      // {
-      //   data: {
-      //     title: 'Independence Day',
-      //     color: '#2196F3',
-      //     calendar: 'US Holidays'
-      //   },
-      //   schedule: {
-      //     month: [Month.JULY],
-      //     dayOfMonth: [4]
-      //   }
-      // },
-      // {
-      //   data: {
-      //     title: 'Labor Day',
-      //     color: '#2196F3',
-      //     calendar: 'US Holidays'
-      //   },
-      //   schedule: {
-      //     month: [Month.SEPTEMBER],
-      //     dayOfWeek: [Weekday.MONDAY],
-      //     lastWeekspanOfMonth: [0]
-      //   }
-      // },
-      // {
-      //   data: {
-      //     title: 'Columbus Day',
-      //     color: '#2196F3',
-      //     calendar: 'US Holidays'
-      //   },
-      //   schedule: {
-      //     month: [Month.OCTOBER],
-      //     dayOfWeek: [Weekday.MONDAY],
-      //     weekspanOfMonth: [1]
-      //   }
-      // },
-      // {
-      //   data: {
-      //     title: 'Veterans Day',
-      //     color: '#2196F3',
-      //     calendar: 'US Holidays'
-      //   },
-      //   schedule: {
-      //     month: [Month.NOVEMBER],
-      //     dayOfMonth: [11]
-      //   }
-      // },
-      // {
-      //   data: {
-      //     title: 'Thanksgiving Day',
-      //     color: '#2196F3',
-      //     calendar: 'US Holidays'
-      //   },
-      //   schedule: {
-      //     month: [Month.NOVEMBER],
-      //     dayOfWeek: [Weekday.THURSDAY],
-      //     weekspanOfMonth: [3]
-      //   }
-      // },
-      // {
-      //   data: {
-      //     title: 'Christmas Day',
-      //     color: '#2196F3',
-      //     calendar: 'US Holidays'
-      //   },
-      //   schedule: {
-      //     month: [Month.DECEMBER],
-      //     dayOfMonth: [25]
-      //   }
-      // }
-    ]
-  }),
+        // {
+        //   data: {
+        //     title: 'Mother\'s Day',
+        //     color: '#2196F3',
+        //     calendar: 'US Holidays'
+        //   },
+        //   schedule: {
+        //     month: [Month.MAY],
+        //     dayOfWeek: [Weekday.SUNDAY],
+        //     weekspanOfMonth: [1]
+        //   }
+        // },
+        // {
+        //   data: {
+        //     title: 'New Year\'s Day',
+        //     color: '#2196F3',
+        //     calendar: 'US Holidays'
+        //   },
+        //   schedule: {
+        //     month: [Month.JANUARY],
+        //     dayOfMonth: [1]
+        //   }
+        // },
+        // {
+        //   data: {
+        //     title: 'Inauguration Day',
+        //     color: '#2196F3',
+        //     calendar: 'US Holidays'
+        //   },
+        //   schedule: {
+        //     month: [Month.JANUARY],
+        //     dayOfMonth: [20]
+        //   }
+        // },
+        // {
+        //   data: {
+        //     title: 'Martin Luther King, Jr. Day',
+        //     color: '#2196F3',
+        //     calendar: 'US Holidays'
+        //   },
+        //   schedule: {
+        //     month: [Month.JANUARY],
+        //     dayOfWeek: [Weekday.MONDAY],
+        //     weekspanOfMonth: [2]
+        //   }
+        // },
+        // {
+        //   data: {
+        //     title: 'George Washington\'s Birthday',
+        //     color: '#2196F3',
+        //     calendar: 'US Holidays'
+        //   },
+        //   schedule: {
+        //     month: [Month.FEBRUARY],
+        //     dayOfWeek: [Weekday.MONDAY],
+        //     weekspanOfMonth: [2]
+        //   }
+        // },
+        // {
+        //   data: {
+        //     title: 'Memorial Day',
+        //     color: '#2196F3',
+        //     calendar: 'US Holidays'
+        //   },
+        //   schedule: {
+        //     month: [Month.MAY],
+        //     dayOfWeek: [Weekday.MONDAY],
+        //     lastWeekspanOfMonth: [0]
+        //   }
+        // },
+        // {
+        //   data: {
+        //     title: 'Independence Day',
+        //     color: '#2196F3',
+        //     calendar: 'US Holidays'
+        //   },
+        //   schedule: {
+        //     month: [Month.JULY],
+        //     dayOfMonth: [4]
+        //   }
+        // },
+        // {
+        //   data: {
+        //     title: 'Labor Day',
+        //     color: '#2196F3',
+        //     calendar: 'US Holidays'
+        //   },
+        //   schedule: {
+        //     month: [Month.SEPTEMBER],
+        //     dayOfWeek: [Weekday.MONDAY],
+        //     lastWeekspanOfMonth: [0]
+        //   }
+        // },
+        // {
+        //   data: {
+        //     title: 'Columbus Day',
+        //     color: '#2196F3',
+        //     calendar: 'US Holidays'
+        //   },
+        //   schedule: {
+        //     month: [Month.OCTOBER],
+        //     dayOfWeek: [Weekday.MONDAY],
+        //     weekspanOfMonth: [1]
+        //   }
+        // },
+        // {
+        //   data: {
+        //     title: 'Veterans Day',
+        //     color: '#2196F3',
+        //     calendar: 'US Holidays'
+        //   },
+        //   schedule: {
+        //     month: [Month.NOVEMBER],
+        //     dayOfMonth: [11]
+        //   }
+        // },
+        // {
+        //   data: {
+        //     title: 'Thanksgiving Day',
+        //     color: '#2196F3',
+        //     calendar: 'US Holidays'
+        //   },
+        //   schedule: {
+        //     month: [Month.NOVEMBER],
+        //     dayOfWeek: [Weekday.THURSDAY],
+        //     weekspanOfMonth: [3]
+        //   }
+        // },
+        // {
+        //   data: {
+        //     title: 'Christmas Day',
+        //     color: '#2196F3',
+        //     calendar: 'US Holidays'
+        //   },
+        //   schedule: {
+        //     month: [Month.DECEMBER],
+        //     dayOfMonth: [25]
+        //   }
+        // }
+      ]
+    }
+  },
   created () {
       this.getStudentIdByName()
       this.getStudentClass()
@@ -259,7 +261,6 @@ export default {
   methods:
   {
     getStudentClass() {
-      console.log('getclass');
       initClasses().then(res =>  {
           let list = res.data
           this.lists = list
@@ -337,33 +338,56 @@ export default {
       {
         console.log( e );
       }
-      for (var i = 0; i < this.myClasses.length; i++) {
-        var myClass = this.myClasses[i];
-        this.defaultEvents.push({
-          data: {
-            title: myClass.class_name,
-            color: '#3F51B5'
-          },
-          schedule: {
-            dayOfWeek: [Weekday.SUNDAY],
-            times: [14],
-            duration: 60,
-            durationUnit: 'minutes'
-          }
-        });
-        console.log('rile');
-      }
-      console.log('lists', this.lists);
-      state.events = this.defaultEvents;
-      let defaults = this.$dayspan.getDefaultEventDetails();
-      state.events.forEach(ev =>
-      {
-        ev.data = dsMerge( ev.data, defaults );
-      });
-      this.$refs.app.setState( state );
+      
+      var classesList = [];
+      getStudentId(this.userName).then(res => {
+            getStudentClass(res.data[0].id).then(res => {
+                for (var i = 0; i < res.data.length; i++) {
+                    var iid = res.data[i].class_id;
+                    for (var j = 0; j < this.lists.length; j++) {
+                        if (this.lists[j].id === iid) {
+                            classesList.push(this.lists[j]);
+                            break;
+                        }
+                    }
+                }
+                for (var i = 0; i < classesList.length; i++) {
+                  var myClass = classesList[i];
+                  console.log('class', myClass);
+                  
+                  switch (myClass.week_day) {
+                    case 0:
+
+                  } 
+                  this.defaultEvents.push({
+                    data: {
+                      title: myClass.class_name,
+                      color: '#3F51B5'
+                    },
+                    schedule: {
+                      dayOfWeek: [Weekday.SUNDAY],
+                      times: [14],
+                      duration: 60,
+                      durationUnit: 'minutes'
+                    }
+                  });
+                  state.events = this.defaultEvents;
+                  let defaults = this.$dayspan.getDefaultEventDetails();
+                  state.events.forEach(ev =>
+                  {
+                    ev.data = dsMerge( ev.data, defaults );
+                  });
+                  this.$refs.app.setState( state );
+                }
+            }).catch(e => {
+                console.log('cannot get student classes', e.message)
+            })
+        }).catch(e => {
+            console.log('cannot find student', e.message)
+        })
+      
     },
     getStudentIdByName() {
-      console.log('wanle');
         getStudentId(this.userName).then(res => {
             this.userId = res.data[0].id;
         }).catch(e => {

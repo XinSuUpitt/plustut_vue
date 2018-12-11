@@ -22,12 +22,12 @@
                     <i class="iconfont icon-submit"  @click.stop="submitEditName" ></i>
                 </template>
             </div>
-            <div @click="logout" class="logout">
+            <div @click="logout" class="logout">/
                <i class="iconfont icon-logout23"></i>
                退出
             </div>
         </section>
-        <Loading :loading="loading" />
+        <!-- <Loading :loading="loading" />
         <section class="like_list list">
             <h3>
                 <i class="iconfont icon-msnui-love"></i>
@@ -86,7 +86,7 @@
                     <div class="delete" @click="deleteComment(comment.id,userName,index,$event)">删除</div>
                 </li> 
             </ul>
-        </section>
+        </section> -->
     </section>
   </section>  
 </template>
