@@ -12,16 +12,16 @@
                     <img src="../assets/plustut_logo.png">
                     </mu-avatar>
                 </mu-card-header>
-                <mu-card-media :title="elementary.class_name" sub-title="">
+                <mu-card-media :title="elementary.name" sub-title="">
                     <img src="../assets/home_3.jpg">
                 </mu-card-media>
                 <mu-card-title :title="elementary.price" sub-title="课程费用"></mu-card-title>
                 <mu-card-text>
                     {{elementary.description}}
                 </mu-card-text>
-                <mu-card-actions>
+                <!-- <mu-card-actions>
                     <mu-button color="primary" @click="addClass(elementary.id)">添加到我的课程</mu-button>
-                </mu-card-actions>
+                </mu-card-actions> -->
             </mu-card>   
         </div>
         <div class="row_flex" v-if="active2 === 1" v-for="middle in middles" :key="middle.id">
@@ -31,16 +31,16 @@
                     <img src="../assets/plustut_logo.png">
                     </mu-avatar>
                 </mu-card-header>
-                <mu-card-media :title="middle.class_name" sub-title="">
+                <mu-card-media :title="middle.name" sub-title="">
                     <img src="../assets/home_3.jpg">
                 </mu-card-media>
                 <mu-card-title :title="middle.price" sub-title="课程费用"></mu-card-title>
                 <mu-card-text>
                     {{middle.description}}
                 </mu-card-text>
-                <mu-card-actions>
+                <!-- <mu-card-actions>
                     <mu-button color="primary" @click="addClass(middle.id)">添加到我的课程</mu-button>
-                </mu-card-actions>
+                </mu-card-actions> -->
             </mu-card> 
         </div>
         <div class="row_flex" v-if="active2 === 2" v-for="myclass in myClasses" :key="myclass.id">
@@ -122,12 +122,12 @@ export default {
                     var teas = this.teachers[0];
                     for (var j = 0; j < teas.length; j++) {
                         if (this.lists[i].teacher_id === teas[j].id) {
-                            this.lists[i].teacher_id = teas[j].username;
+                            this.lists[i].teacher_id = teas[j].name;
                             break;
                         }
                     }
                     this.lists[i].price = this.lists[i].price + "元/节";
-                    if (this.lists[i].elementary === 0) {
+                    if (this.lists[i].code_level_3 < 7) {
                         elementaryList.push(this.lists[i]);
                     } else {
                         middleList.push(this.lists[i]);

@@ -10,7 +10,7 @@
                     <div class="input">
                         <div class="input_wrap">
                             <i class="iconfont icon-name"></i>
-                            <input type="text" v-model.trim="userName" @keyup.enter="signin" name="userName" placeholder="用户名">
+                            <input type="text" v-model.trim="userName" @keyup.enter="signin" name="userName" placeholder="邮箱">
                         </div>
                         <div class="input_wrap">
                             <i class="iconfont icon-mima1"></i>
