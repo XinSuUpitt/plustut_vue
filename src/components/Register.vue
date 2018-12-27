@@ -10,7 +10,19 @@
                     <div class="input">
                         <div class="input_wrap">
                             <i class="iconfont icon-name"></i>
-                            <input type="text" v-model.trim="userName" @keyup.enter="signin" name="userName" placeholder="用户名">
+                            <input type="text" v-model.trim="name" @keyup.enter="signin" name="name" placeholder="姓名">
+                        </div>
+                        <div class="input_wrap">
+                            <i class="iconfont icon-email"></i>
+                            <input type="text" v-model.trim="email" @keyup.enter="signin" name="email" placeholder="邮箱">
+                        </div>
+                        <div class="input_wrap">
+                            <i class="iconfont icon-email"></i>
+                            <input type="text" v-model.trim="phoneNumber" @keyup.enter="signin" name="phoneNumber" placeholder="电话号">
+                        </div>
+                        <div class="input_wrap">
+                            <i class="iconfont icon-email"></i>
+                            <input type="text" v-model.trim="wechat" @keyup.enter="signin" name="wechat" placeholder="微信号">
                         </div>
                         <div class="input_wrap">
                             <i class="iconfont icon-mima1"></i>
@@ -59,10 +71,31 @@ export default {
     methods:{
         // 登录 
         signin(){
-            if (this.userName === '' || this.password === '') {
+            if (this.name === '' || this.password === '') {
                 this.$toast({
                     icon:'fail',
                     message:'用户名/密码不能为空'
+                }) 
+                return 
+            }
+            if (this.email === '') {
+                this.$toast({
+                    icon:'fail',
+                    message:'邮箱不能为空'
+                }) 
+                return 
+            }
+            if (this.phoneNumber === '') {
+                this.$toast({
+                    icon:'fail',
+                    message:'电话号不能为空'
+                }) 
+                return 
+            }
+            if (this.wechat === '') {
+                this.$toast({
+                    icon:'fail',
+                    message:'微信号不能为空'
                 }) 
                 return 
             }
@@ -73,7 +106,7 @@ export default {
                 }) 
                 return 
             }
-            register(this.userName,this.password).then(data => {
+            register(this.name, this.email, this.phoneNumber, this.wechat, this.password).then(data => {
                 // 用户存在
                 if (data.code == 200) {
                     this.$toast({

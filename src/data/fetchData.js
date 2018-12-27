@@ -57,7 +57,7 @@ export const yzmChange = () => $fetch('get','getYzm')
 export const signin = (userName, password) => $fetch('post','signin', {userName,password})
 
 //注册
-export const register = (userName, password) => $fetch('post','register', {userName,password})
+export const register = (userName, email, phoneNumber, wechat, password) => $fetch('post','register', {userName, email, phoneNumber, wechat, password})
 
 // 个人评论
 export const meComment = (userName) => $fetch('post', 'getUserComment', {userName})
